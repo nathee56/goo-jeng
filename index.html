@@ -28,7 +28,7 @@
                     <li><a href="page1.html">สาระศาสนา</a></li>
                     <li><a href="page2.html">สาระหน้าที่พลเมือง</a></li>
                     <li><a href="page3.html">สาระเศรษฐศาสตร์</a></li>
-                    <li><a href="about.html">เกี่ยวกับฉัน</a></li>
+                    <li><a href="exam.html">แนวข้อสอบ</a></li> <li><a href="about.html">เกี่ยวกับฉัน</a></li>
                 </ul>
             </nav>
         </div>
@@ -65,6 +65,12 @@
                         </div>
 
                         <div class="intro-box slide-item">
+                            <h2>ฝึกฝนด้วยแนวข้อสอบสังคมศึกษา</h2>
+                            <p>ทบทวนความรู้และฝึกฝนทักษะด้วยชุดแนวข้อสอบที่ครอบคลุมเนื้อหาสำคัญ ช่วยให้คุณพร้อมสำหรับการสอบจริงมากยิ่งขึ้น</p>
+                            <a href="exam.html" class="btn">เริ่มทำแนวข้อสอบ</a>
+                        </div>
+
+                        <div class="intro-box slide-item">
                             <h2>เกี่ยวกับผู้จัดทำ "สังคมศึกษาพาสู่ฝัน"</h2>
                             <p>ทำความรู้จักกับผม ผู้สร้างสรรค์เว็บไซต์แห่งนี้ แรงบันดาลใจ และวิสัยทัศน์ที่มุ่งมั่นจะเป็นส่วนหนึ่งในการพัฒนาการเรียนรู้สังคมศึกษาของคุณ.</p>
                             <a href="about.html" class="btn">ทำความรู้จัก</a>
@@ -85,7 +91,7 @@
                             <li><a href="page1.html" class="btn-small">สาระศาสนา ศีลธรรม จริยธรรม</a></li>
                             <li><a href="page2.html" class="btn-small">สาระหน้าที่พลเมือง วัฒนธรรม และการดำเนินชีวิต</a></li>
                             <li><a href="page3.html" class="btn-small">สาระเศรษฐศาสตร์</a></li>
-                        </ul>
+                            <li><a href="exam.html" class="btn-small">แนวข้อสอบ</a></li> </ul>
                     </div>
                 </div>
             </section>
@@ -114,7 +120,7 @@
                     <li><a href="page1.html">สรุปสาระศาสนา</a></li>
                     <li><a href="page2.html">สรุปสาระหน้าที่พลเมือง</a></li>
                     <li><a href="page3.html">สรุปสาระเศรษฐศาสตร์</a></li>
-                    <li><a href="about.html">เกี่ยวกับฉัน</a></li>
+                    <li><a href="exam.html">แนวข้อสอบ</a></li> <li><a href="about.html">เกี่ยวกับฉัน</a></li>
                 </ul>
             </div>
 
@@ -164,22 +170,17 @@
             const slideInterval = 5000; // 5 วินาที
 
             function showNextSlide() {
-                // ลบ class 'active' และ 'leaving' ออกจากสไลด์ปัจจุบัน
                 slides[currentSlide].classList.remove('active');
-                slides[currentSlide].classList.add('leaving'); // เพิ่ม class 'leaving' เพื่อให้เกิด animation ออก
+                slides[currentSlide].classList.add('leaving');
 
-                // คำนวณสไลด์ถัดไป
                 currentSlide = (currentSlide + 1) % slides.length;
 
-                // ลบ class 'leaving' ที่อาจค้างอยู่ และเพิ่ม class 'active' ให้สไลด์ถัดไป
                 slides[currentSlide].classList.remove('leaving');
-                slides[currentSlide].classList.add('active'); // เพิ่ม class 'active' เพื่อให้เกิด animation เข้า
+                slides[currentSlide].classList.add('active');
             }
 
-            // ตั้งค่าเริ่มต้น: แสดง slide แรก
             slides[0].classList.add('active');
 
-            // เริ่มการเลื่อนสลับอัตโนมัติ
             setInterval(showNextSlide, slideInterval);
         });
     </script>
