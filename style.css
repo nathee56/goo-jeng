@@ -1,0 +1,842 @@
+html {
+    scroll-behavior: smooth;
+}
+
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Sarabun', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #F7F9FC;
+    overflow-x: hidden;
+}
+
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+a {
+    color: #0056B3;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Header */
+header {
+    background-color: #FFFFFF;
+    padding: 20px 0;
+    text-align: center;
+    border-bottom: 1px solid #E0E6EF;
+    position: relative;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.site-branding {
+    display: flex;
+    align-items: center;
+}
+
+.site-logo-link {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 15px;
+    text-decoration: none;
+}
+
+.site-logo {
+    height: 70px;
+    width: auto;
+    max-width: 220px;
+    transition: transform 0.2s ease-out;
+}
+
+.site-logo:hover {
+    transform: scale(1.05);
+}
+
+.site-title {
+    font-size: 2.0em;
+    font-weight: 600;
+    color: #1A3E6F;
+    margin: 0;
+    white-space: nowrap;
+}
+
+/* Main Navigation */
+.main-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.main-nav ul li {
+    margin-left: 25px;
+}
+
+.main-nav ul li a {
+    color: #3D5A80;
+    font-weight: 400;
+    font-size: 1.1em;
+    padding: 5px 0;
+    position: relative;
+}
+
+.main-nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -3px;
+    left: 0;
+    background-color: #0056B3;
+    transition: width 0.3s ease-in-out;
+}
+
+.main-nav ul li a:hover::after {
+    width: 100%;
+}
+
+/* Hamburger Menu Icon (Hidden on Desktop) */
+.hamburger-menu {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.8em;
+    color: #3D5A80;
+    cursor: pointer;
+    padding: 10px;
+}
+
+/* Hero Section (หน้าหลักพร้อมกล่องข้อความแนะนำ) */
+.hero-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+    text-align: center;
+    background-color: #EBF2F7;
+    padding: 50px 0;
+    overflow: hidden;
+    position: relative;
+    /* ไม่มี box-shadow หรือ border-top ที่นี่ เพราะจะอยู่ใน main-content-area */
+}
+
+/* Wrapper สำหรับ Slides */
+.intro-slides-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+    height: 400px; /* กำหนดความสูง เพื่อไม่ให้หน้าจอกระตุกเวลาเปลี่ยน slide */
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+/* สไตล์สำหรับแต่ละ Slide Item */
+.slide-item {
+    background-color: #ffffff;
+    padding: 50px;
+    border-radius: 8px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    max-width: 700px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0; /* ซ่อนไว้ในตอนเริ่มต้น */
+    transform: translateX(100%); /* เริ่มต้นจากขวานอกจอ */
+    display: none; /* ซ่อนด้วย display: none ในตอนแรก */
+}
+
+/* Animation สำหรับ Slide เข้ามา */
+.slide-item.active {
+    display: block; /* แสดงผลเมื่อ active */
+    animation: slideIn 0.8s ease-out forwards;
+}
+
+/* Animation สำหรับ Slide ออกไป */
+.slide-item.leaving {
+    animation: slideOut 0.8s ease-in forwards;
+}
+
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideOut {
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-100%); /* เลื่อนออกไปทางซ้าย */
+    }
+}
+
+
+.intro-image { /* ถ้ามีการใช้รูปภาพใน intro-box */
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.intro-box h2 {
+    font-size: 2.5em;
+    font-weight: 400;
+    color: #1A3E6F;
+    margin-bottom: 25px;
+    line-height: 1.3;
+}
+
+.intro-box p {
+    font-size: 1.1em;
+    color: #555;
+    margin-bottom: 35px;
+    line-height: 1.7;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #FFC107;
+    color: #333;
+    padding: 15px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.1em;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #E0A800;
+    text-decoration: none;
+}
+
+/* Main Content Placeholder and Quick Links */
+.main-content-placeholder {
+    padding: 80px 0;
+    background-color: transparent; /* พื้นหลังถูกกำหนดที่ .main-content-area */
+    border-top: none; /* border ถูกกำหนดที่ .main-content-area */
+    box-shadow: none; /* shadow ถูกกำหนดที่ .main-content-area */
+}
+
+
+/* Section for content details (for page1.html, page2.html, page3.html) */
+.content-detail-section {
+    /* ไม่มี padding ที่นี่แล้ว เพราะจะอยู่ใน .main-content-area */
+    background-color: #FFFFFF; /* กำหนดให้แต่ละ section มีพื้นหลังของตัวเอง */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* เงาของแต่ละ section */
+    border-radius: 8px;
+    margin-bottom: 20px; /* ระยะห่างระหว่าง sections (ถ้ามีหลาย section ใน main-content-area) */
+    padding: 30px; /* เพิ่ม padding ในแต่ละ section */
+}
+
+/* ลบ shadow ที่นี่ออก เพราะจะไปรวมใน .main-content-area แล้ว */
+.main-content-area .content-detail-section {
+    box-shadow: none;
+    padding: 0; /* ลบ padding ออกเพราะ main-content-area มี padding แล้ว */
+}
+
+
+.content-detail-section h2 {
+    color: #1A3E6F;
+    margin-bottom: 30px;
+    font-size: 2.2em;
+    text-align: center;
+}
+
+.content-detail-section p, .content-detail-section ul {
+    color: #555;
+    font-size: 1.05em;
+    max-width: 800px;
+    margin: 0 auto 20px auto;
+    padding: 0 15px; /* padding ด้านข้างสำหรับเนื้อหา */
+}
+
+.content-detail-section h3 {
+    color: #0056B3;
+    font-size: 1.6em;
+    margin: 30px auto 15px auto;
+    max-width: 800px;
+    padding: 0 15px;
+}
+
+.content-detail-section ul {
+    list-style-type: disc;
+    padding-left: 40px;
+}
+
+.content-detail-section ul li {
+    margin-bottom: 10px;
+}
+
+
+.quick-links {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.quick-links h3 {
+    font-size: 1.8em;
+    color: #1A3E6F;
+    margin-bottom: 20px;
+}
+
+.quick-links ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.quick-links ul li {
+    margin: 0;
+}
+
+.btn-small {
+    display: inline-block;
+    background-color: #6C7A89;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.95em;
+    font-weight: 400;
+    transition: background-color 0.3s ease, transform 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+
+.btn-small:hover {
+    background-color: #4D5E6D;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Footer */
+footer {
+    background-color: #1A3E6F;
+    color: #E0E6EF;
+    text-align: center;
+    padding: 25px 0;
+    margin-top: 50px;
+    font-size: 0.9em;
+}
+
+/* Styles for About Page */
+.about-page {
+    /* padding: 60px 0; ย้าย padding ไปที่ .main-content-area แทน */
+    text-align: center;
+    background-color: #FFFFFF;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    /* margin: 40px auto; จัดการด้วย main-content-area แทน */
+    /* max-width: 800px; จัดการด้วย main-content-area แทน */
+}
+
+/* ทำให้เกี่ยวกับฉันไม่มี margin auto เมื่อมี sidebar */
+.has-sidebar .about-page {
+    margin: 0; /* ลบ margin auto ออกเมื่ออยู่ใน has-sidebar */
+    max-width: 100%; /* ให้ใช้ความกว้างเต็ม main-content-area */
+    padding: 0; /* content-detail-section มี padding อยู่แล้ว */
+    box-shadow: none; /* เงาของ main-content-area จะครอบคลุม */
+}
+
+
+.about-page h2 {
+    font-size: 2.5em;
+    color: #1A3E6F;
+    margin-bottom: 30px;
+}
+
+.about-content p {
+    font-size: 1.1em;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 20px;
+    padding: 0 20px; /* เพิ่ม padding ด้านข้าง */
+}
+
+.about-images {
+    margin: 40px 0;
+    display: flex;
+    flex-wrap: wrap; /* ให้รูปภาพขึ้นบรรทัดใหม่เมื่อจอเล็ก */
+    justify-content: center;
+    align-items: center;
+    gap: 30px; /* ระยะห่างระหว่างรูปภาพ */
+}
+
+.about-logo {
+    max-width: 150px; /* ขนาดโลโก้ GOOJENG */
+    height: auto;
+}
+
+.about-nextgen-logo {
+    max-width: 300px; /* ขนาดโลโก้ NEXTGEN+ */
+    height: auto;
+}
+
+
+.about-page h3 {
+    font-size: 1.8em;
+    color: #0056B3;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.about-page ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 40px;
+}
+
+.about-page ul li {
+    font-size: 1.1em;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+
+/* --- Layout with Sidebar --- */
+.has-sidebar {
+    display: flex; /* ใช้ Flexbox เพื่อจัดเรียงเป็นคอลัมน์ */
+    justify-content: space-between;
+    gap: 30px; /* ระยะห่างระหว่างเนื้อหาหลักกับ Sidebar */
+    padding: 40px 20px; /* เพิ่ม padding ให้กับ main */
+    max-width: 1200px; /* เพิ่ม max-width ให้ main เพื่อให้มีที่ว่างด้านข้างเว็บ */
+    margin: 0 auto; /* จัดกึ่งกลาง */
+    align-items: flex-start; /* จัดให้เนื้อหาเริ่มต้นจากด้านบน */
+}
+
+.main-content-area {
+    flex: 3; /* ให้เนื้อหาหลักใช้พื้นที่ 3 ส่วน */
+    min-width: 0; /* แก้ไขปัญหา overflow ใน flex item */
+    background-color: #FFFFFF; /* กำหนดพื้นหลังถ้าต้องการ */
+    padding: 30px; /* เพิ่ม padding ในส่วนเนื้อหาหลัก */
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* เพิ่มเงา */
+    overflow: hidden; /* ป้องกันเนื้อหาไหลออกนอกกรอบเมื่อใช้ animation */
+}
+
+/* ปรับ container ใน hero-section ให้มี padding ด้านข้าง */
+.hero-section .container {
+    padding: 0 20px; /* ใส่ padding กลับไปที่ container ภายใน hero-section */
+    max-width: none; /* ยกเลิก max-width ของ container เพื่อให้เต็มความกว้างของ hero-section */
+}
+
+
+.sidebar {
+    flex: 1; /* ให้ Sidebar ใช้พื้นที่ 1 ส่วน */
+    background-color: #FFFFFF;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    position: sticky; /* ทำให้ sidebar ติดตามการ scroll */
+    top: 100px; /* ระยะห่างจากด้านบนเมื่อ sticky (อาจต้องปรับ) */
+    align-self: flex-start; /* ทำให้ sidebar ไม่ยืดเต็มความสูงของ parent */
+}
+
+.sidebar h3, .sidebar h4 {
+    color: #1A3E6F;
+    margin-bottom: 15px;
+    font-size: 1.3em;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 8px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+    color: #3D5A80;
+    display: block;
+    padding: 5px 0;
+    transition: color 0.2s ease;
+}
+
+.sidebar ul li a:hover {
+    color: #0056B3;
+    text-decoration: underline;
+}
+
+.sidebar-widget {
+    margin-bottom: 30px;
+}
+
+.social-icons a {
+    font-size: 1.5em;
+    margin-right: 15px;
+    color: #3D5A80;
+    transition: color 0.2s ease;
+}
+
+.social-icons a:hover {
+    color: #0056B3;
+}
+
+.call-to-action-box {
+    background-color: #EBF2F7;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.call-to-action-box h4 {
+    color: #0056B3;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    border-bottom: none;
+}
+
+.call-to-action-box p {
+    font-size: 0.9em;
+    margin-bottom: 15px;
+    color: #555;
+}
+
+.btn-sidebar {
+    display: inline-block;
+    background-color: #FFC107;
+    color: #333;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.9em;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.btn-sidebar:hover {
+    background-color: #E0A800;
+    text-decoration: none;
+}
+
+/* Search Box Styles */
+.search-box form {
+    display: flex;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.search-box input[type="search"] {
+    flex-grow: 1;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1em;
+    outline: none;
+}
+
+.search-box button[type="submit"] {
+    background-color: #0056B3;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-box button[type="submit"]:hover {
+    background-color: #004494;
+}
+
+/* Quote of the Day Styles */
+.quote-of-the-day {
+    text-align: center;
+    font-style: italic;
+    color: #555;
+}
+
+.quote-of-the-day blockquote {
+    font-size: 1.1em;
+    margin: 0;
+    padding: 0 10px;
+}
+
+.quote-of-the-day .quote-author {
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: #888;
+}
+
+/* --- Responsive Design with Media Queries --- */
+
+/* สำหรับ Tablet และหน้าจอเล็กกว่า Desktop */
+@media (max-width: 992px) {
+    .site-logo {
+        height: 60px;
+        max-width: 180px;
+    }
+
+    .site-title {
+        font-size: 1.8em;
+    }
+
+    .main-nav ul li {
+        margin-left: 15px;
+    }
+
+    .intro-box {
+        padding: 40px;
+    }
+
+    .intro-box h2 {
+        font-size: 2em;
+    }
+
+    .intro-box p {
+        font-size: 1em;
+    }
+
+    .intro-slides-wrapper {
+        height: 350px;
+    }
+
+    /* Layout with Sidebar on smaller screens */
+    .has-sidebar {
+        flex-direction: column; /* บนแท็บเล็ตให้ sidebar อยู่ด้านล่างเนื้อหาหลัก */
+        padding: 30px 15px;
+        gap: 20px;
+    }
+
+    .main-content-area {
+        padding: 20px;
+    }
+
+    .sidebar {
+        position: static; /* ยกเลิก sticky บนแท็บเล็ต/มือถือ */
+        top: auto;
+        margin-top: 20px;
+        width: 100%;
+    }
+
+    /* Adjust padding for sections within main-content-area on smaller screens */
+    .content-detail-section,
+    .hero-section {
+        padding: 0; /* Remove padding from section itself, it's handled by main-content-area */
+        box-shadow: none; /* Remove shadow from section, it's handled by main-content-area */
+    }
+
+    /* Restore specific padding to internal containers where needed */
+    .hero-section .container,
+    .main-content-placeholder .container,
+    .content-detail-section .container,
+    .about-page .container {
+        padding: 0 15px; /* Adjust padding for containers inside sections */
+    }
+
+    /* Responsive adjustments for About Page when sidebar is present */
+    .has-sidebar .about-page {
+        padding: 0; /* remove padding, container will handle */
+        margin: 0; /* remove margin, main-content-area will handle */
+        max-width: 100%;
+        box-shadow: none;
+    }
+}
+
+/* สำหรับ Mobile Phone (และหน้าจอเล็กกว่า Tablet) */
+@media (max-width: 768px) {
+    header .container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .site-branding {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    .site-logo-link {
+        margin-bottom: 5px;
+        margin-right: 0;
+    }
+
+    .site-logo {
+        height: 50px;
+        max-width: 150px;
+    }
+
+    .site-title {
+        font-size: 1.4em;
+        text-align: left;
+        white-space: nowrap;
+    }
+
+    .main-nav {
+        display: none;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background-color: #ffffff;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        overflow: hidden;
+        max-height: 0;
+        transition: max-height 0.4s ease-in-out;
+    }
+
+    .main-nav.active {
+        display: block;
+        max-height: 300px;
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    .main-nav ul li {
+        margin: 10px 0;
+    }
+
+    .main-nav ul li a {
+        display: block;
+        padding: 10px 20px;
+        color: #333;
+    }
+
+    .main-nav ul li a:hover {
+        background-color: #f0f0f0;
+    }
+
+    .hamburger-menu {
+        display: block;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+    }
+
+    .hamburger-menu.active i.fa-bars {
+        transform: rotate(90deg);
+        transition: transform 0.3s ease;
+    }
+    .hamburger-menu i.fa-bars {
+        transition: transform 0.3s ease;
+    }
+
+    .hero-section {
+        min-height: 60vh;
+        padding: 30px 0;
+    }
+
+    .intro-box {
+        padding: 30px;
+    }
+
+    .intro-box h2 {
+        font-size: 1.5em;
+    }
+
+    .intro-box p {
+        font-size: 0.95em;
+    }
+
+    .btn {
+        padding: 12px 25px;
+        font-size: 1em;
+    }
+
+    .quick-links h3 {
+        font-size: 1.5em;
+    }
+
+    .quick-links ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn-small {
+        width: 80%;
+        padding: 12px;
+    }
+
+    /* Content sections on mobile */
+    .content-detail-section {
+        padding: 0; /* Handled by main-content-area */
+        margin-bottom: 15px; /* Adjusted margin */
+    }
+    .content-detail-section h2 {
+        font-size: 1.8em;
+    }
+    .content-detail-section p, .content-detail-section ul {
+        font-size: 1em;
+    }
+    .intro-slides-wrapper {
+        height: 300px;
+    }
+
+    /* Sidebar on mobile */
+    .has-sidebar {
+        padding: 20px 10px;
+    }
+    .main-content-area {
+        padding: 15px;
+    }
+    .sidebar h3, .sidebar h4 {
+        font-size: 1.1em;
+    }
+    .sidebar ul li a {
+        font-size: 0.95em;
+    }
+
+    /* Restore specific padding to internal containers for mobile */
+    .hero-section .container,
+    .main-content-placeholder .container,
+    .content-detail-section .container,
+    .about-page .container {
+        padding: 0 10px; /* Adjust padding for containers inside sections */
+    }
+
+    /* About page responsive adjust for mobile */
+    .about-page {
+        padding: 0; /* Handled by main-content-area */
+        margin: 0; /* Handled by main-content-area */
+    }
+    .about-page h2 {
+        font-size: 1.8em;
+    }
+    .about-content p {
+        font-size: 0.95em;
+        padding: 0 5px;
+    }
+}
