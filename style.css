@@ -321,11 +321,126 @@ header .container {
 }
 
 /* สไตล์สำหรับเฉลยข้อสอบ */
-.answer-reveal {
+.exam-question-block {
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.03);
+}
+
+.exam-question-block h3 {
+    color: #1A3E6F;
+    font-size: 1.5em;
+    margin-top: 0;
+    margin-bottom: 15px;
+    text-align: left;
+    padding: 0;
+    max-width: none;
+}
+
+.exam-question-block p {
+    font-size: 1.0em;
+    margin-bottom: 15px;
+    color: #333;
+    padding: 0;
+}
+
+.exam-question-block ol {
+    list-style-type: upper-alpha;
+    padding-left: 30px;
+    margin-bottom: 15px;
+}
+
+.exam-question-block ol li {
+    margin-bottom: 8px;
+    font-size: 0.95em;
+    color: #555;
+}
+
+.exam-question-block .show-answer-btn {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.exam-question-block .show-answer-btn:hover {
+    background-color: #0056b3;
+}
+
+.exam-question-block .answer-reveal {
     color: #D32F2F; /* สีแดง */
     font-weight: bold;
-    margin-top: 5px;
-    display: block;
+    margin-top: 15px;
+    display: none; /* ซ่อนไว้ในตอนแรก */
+    font-size: 1.0em;
+    padding: 0;
+}
+
+
+/* สไตล์สำหรับกลุ่มดาวน์โหลด PDF */
+.download-section {
+    background-color: #EBF2F7; /* สีพื้นหลังอ่อนๆ */
+    padding: 30px;
+    margin: 40px auto 20px auto; /* กำหนด margin ให้มีระยะห่าง */
+    border-radius: 8px;
+    text-align: center;
+    max-width: 800px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.download-section h3 {
+    color: #1A3E6F;
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    /* Reset styles จาก h3 ทั่วไป เพื่อให้ text-align: center ทำงาน */
+    text-align: center;
+    padding: 0;
+    max-width: none;
+}
+
+.download-section p {
+    color: #555;
+    font-size: 1.0em;
+    margin-bottom: 25px;
+    padding: 0 15px; /* เพิ่ม padding ด้านข้างสำหรับ p */
+}
+
+.btn-download {
+    display: inline-block;
+    background-color: #4CAF50; /* สีเขียวสดใส */
+    color: #fff;
+    padding: 15px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.1em;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease-out, box-shadow 0.2s ease-out;
+    margin-bottom: 10px; /* ระยะห่างจากข้อความ note */
+}
+
+.btn-download:hover {
+    background-color: #45a049;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-download i {
+    margin-right: 10px; /* ระยะห่างระหว่าง icon กับ text */
+}
+
+.download-note {
+    font-size: 0.85em;
+    color: #888;
+    margin-top: 10px;
+    padding: 0 15px; /* เพิ่ม padding ด้านข้างสำหรับ p */
 }
 
 
@@ -661,7 +776,7 @@ footer {
     }
 
     .main-content-area {
-        padding: 20px;
+        padding: 20px; /* ลด padding หลักของเนื้อหา */
     }
 
     .sidebar {
@@ -671,25 +786,105 @@ footer {
         width: 100%;
     }
 
-    .content-detail-section,
-    .hero-section {
-        padding: 0;
-        box-shadow: none;
+    .content-detail-section {
+        padding: 20px; /* ลด padding ของ content sections */
+        margin-bottom: 15px; /* ลด margin ระหว่าง sections */
+    }
+    .content-detail-section h2 {
+        font-size: 2em; /* ปรับลดขนาดหัวข้อหลัก */
+        margin-bottom: 20px;
+    }
+    .content-detail-section h3 {
+        font-size: 1.4em; /* ปรับลดขนาดหัวข้อย่อย */
+        margin-top: 25px;
+        margin-bottom: 10px;
+    }
+    .content-detail-section p,
+    .content-detail-section ul,
+    .content-detail-section ol {
+        font-size: 1em; /* ปรับลดขนาดเนื้อหา */
+        margin-bottom: 15px;
+        padding: 0 10px; /* ลด padding ด้านข้างของเนื้อหา */
+    }
+    .content-detail-section ul {
+        padding-left: 30px; /* ลด padding ของ list */
+    }
+    .content-detail-section ol {
+        padding-left: 30px; /* ลด padding ของ list */
+    }
+    .content-detail-section ul li,
+    .content-detail-section ol li {
+        margin-bottom: 8px; /* ลด margin ของ list items */
     }
 
-    .hero-section .container,
-    .main-content-placeholder .container,
-    .content-detail-section .container,
-    .about-page .container {
+    .exam-question-block {
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+    .exam-question-block h3 {
+        font-size: 1.3em;
+        margin-bottom: 10px;
+    }
+    .exam-question-block p {
+        font-size: 0.95em;
+        margin-bottom: 10px;
+    }
+    .exam-question-block ol {
+        padding-left: 25px;
+    }
+    .exam-question-block ol li {
+        font-size: 0.9em;
+        margin-bottom: 5px;
+    }
+    .exam-question-block .show-answer-btn {
+        padding: 8px 15px;
+        font-size: 0.85em;
+    }
+    .exam-question-block .answer-reveal {
+        font-size: 0.9em;
+    }
+
+
+    /* ปรับปรุง About page ใน tablet */
+    .about-page h2 {
+        font-size: 2.2em;
+    }
+    .about-content p {
+        font-size: 1em;
         padding: 0 15px;
     }
-
-    .has-sidebar .about-page {
-        padding: 0;
-        margin: 0;
-        max-width: 100%;
-        box-shadow: none;
+    .about-page h3 {
+        font-size: 1.6em;
     }
+    .about-page ul li {
+        font-size: 1em;
+    }
+    .about-images {
+        gap: 20px;
+    }
+
+    .download-section {
+        padding: 25px;
+        margin: 35px auto 15px auto;
+    }
+    .download-section h3 {
+        font-size: 1.6em;
+        margin-bottom: 18px;
+    }
+    .download-section p {
+        font-size: 0.95em;
+        margin-bottom: 22px;
+        padding: 0 10px;
+    }
+    .btn-download {
+        padding: 12px 25px;
+        font-size: 1em;
+    }
+    .download-note {
+        font-size: 0.8em;
+        padding: 0 10px;
+    }
+
 }
 
 /* สำหรับ Mobile Phone (และหน้าจอเล็กกว่า Tablet) */
@@ -740,15 +935,17 @@ footer {
 
     .main-nav.active {
         display: block;
-        max-height: 300px;
+        max-height: 500px; /* เพิ่มค่าให้สูงขึ้นมากพอที่จะแสดงเมนูทั้งหมด */
+        overflow-y: auto; /* เพิ่ม scrollbar แนวตั้งถ้าเมนูยาวเกินจอ */
+        -webkit-overflow-scrolling: touch; /* เพื่อการเลื่อนที่ราบรื่นบน iOS */
     }
 
     .main-nav ul {
         flex-direction: column;
         text-align: center;
         padding: 10px 0;
-        flex-wrap: wrap; /* ให้กลับมา wrap ได้ใน Mobile เพื่อให้ลิงก์ไม่เล็กเกินไป */
-        overflow-x: hidden; /* ไม่ต้องมี scrollbar ในโหมด mobile menu */
+        flex-wrap: wrap;
+        overflow-x: hidden;
     }
 
     .main-nav ul li {
@@ -759,10 +956,10 @@ footer {
         display: block;
         padding: 10px 20px;
         color: #333;
-        font-size: 1em; /* คืนขนาดปกติใน mobile menu */
-        white-space: normal; /* คืนค่า normal ใน mobile menu */
-        overflow: visible; /* คืนค่า normal ใน mobile menu */
-        text-overflow: clip; /* คืนค่า normal ใน mobile menu */
+        font-size: 1em;
+        white-space: normal;
+        overflow: visible;
+        text-overflow: clip;
     }
 
     .main-nav ul li a:hover {
@@ -785,25 +982,27 @@ footer {
     }
 
     .hero-section {
-        min-height: 60vh;
-        padding: 30px 0;
+        min-height: 50vh; /* ลดความสูงของ Hero Section */
+        padding: 20px 0;
     }
 
     .intro-box {
-        padding: 30px;
+        padding: 20px; /* ลด padding ของ intro box */
     }
 
     .intro-box h2 {
-        font-size: 1.5em;
+        font-size: 1.8em; /* ลดขนาดหัวข้อใน intro box */
+        margin-bottom: 15px;
     }
 
     .intro-box p {
-        font-size: 0.95em;
+        font-size: 0.9em; /* ลดขนาดเนื้อหาใน intro box */
+        margin-bottom: 20px;
     }
 
     .btn {
-        padding: 12px 25px;
-        font-size: 1em;
+        padding: 10px 20px; /* ลดขนาดปุ่ม */
+        font-size: 0.95em;
     }
 
     .quick-links h3 {
@@ -816,53 +1015,280 @@ footer {
     }
 
     .btn-small {
-        width: 80%;
-        padding: 12px;
+        width: 90%; /* ทำให้ปุ่ม Quick Links กว้างขึ้น */
+        padding: 10px;
     }
 
+    /* การปรับปรุงหลักสำหรับเนื้อหาในหน้า Pages บน Mobile */
     .content-detail-section {
-        padding: 0;
-        margin-bottom: 15px;
+        padding: 15px; /* ลด padding ของเนื้อหาหลักลงอีก */
+        margin-bottom: 10px;
     }
     .content-detail-section h2 {
-        font-size: 1.8em;
+        font-size: 1.6em; /* ลดขนาดหัวข้อหลัก */
+        margin-bottom: 15px;
     }
-    .content-detail-section p, .content-detail-section ul, .content-detail-section ol {
-        font-size: 1em;
+    .content-detail-section h3 {
+        font-size: 1.2em; /* ลดขนาดหัวข้อย่อย */
+        margin-top: 20px;
+        margin-bottom: 8px;
     }
-    .intro-slides-wrapper {
-        height: 300px;
+    .content-detail-section p,
+    .content-detail-section ul,
+    .content-detail-section ol {
+        font-size: 0.95em; /* ลดขนาดตัวอักษรของเนื้อหา */
+        margin-bottom: 10px;
+        padding: 0 5px; /* ลด padding ด้านข้างของเนื้อหา */
     }
-
-    .has-sidebar {
-        padding: 20px 10px;
+    .content-detail-section ul {
+        padding-left: 25px; /* ลด padding ของ list */
     }
-    .main-content-area {
-        padding: 15px;
+    .content-detail-section ol {
+        padding-left: 25px; /* ลด padding ของ list */
     }
-    .sidebar h3, .sidebar h4 {
-        font-size: 1.1em;
-    }
-    .sidebar ul li a {
-        font-size: 0.95em;
-    }
-
-    .hero-section .container,
-    .main-content-placeholder .container,
-    .content-detail-section .container,
-    .about-page .container {
-        padding: 0 10px;
+    .content-detail-section ul li,
+    .content-detail-section ol li {
+        margin-bottom: 5px; /* ลด margin ของ list items */
     }
 
+    .exam-question-block {
+        padding: 10px;
+        margin-bottom: 15px;
+    }
+    .exam-question-block h3 {
+        font-size: 1.2em;
+        margin-bottom: 8px;
+    }
+    .exam-question-block p {
+        font-size: 0.9em;
+        margin-bottom: 8px;
+    }
+    .exam-question-block ol {
+        padding-left: 20px;
+    }
+    .exam-question-block ol li {
+        font-size: 0.85em;
+        margin-bottom: 4px;
+    }
+    .exam-question-block .show-answer-btn {
+        padding: 6px 12px;
+        font-size: 0.8em;
+    }
+    .exam-question-block .answer-reveal {
+        font-size: 0.85em;
+    }
+
+
+    /* ปรับปรุง About page ใน mobile */
     .about-page {
-        padding: 0;
-        margin: 0;
+        padding: 15px; /* ลด padding โดยรวม */
     }
     .about-page h2 {
         font-size: 1.8em;
+        margin-bottom: 20px;
     }
     .about-content p {
         font-size: 0.95em;
+        padding: 0 10px;
+        line-height: 1.6; /* ปรับ line-height ให้อ่านง่าย */
+    }
+    .about-images {
+        margin: 20px 0; /* ลด margin ของรูปภาพ */
+        gap: 15px; /* ลด gap ระหว่างรูปภาพ */
+    }
+    .about-logo {
+        max-width: 100px; /* ลดขนาดโลโก้ */
+    }
+    .about-nextgen-logo {
+        max-width: 200px; /* ลดขนาดโลโก้ Nextgen */
+    }
+    .about-page h3 {
+        font-size: 1.5em;
+        margin-top: 30px;
+        margin-bottom: 15px;
+    }
+    .about-page ul li {
+        font-size: 0.95em;
+    }
+
+    /* Footer */
+    footer {
+        padding: 20px 0;
+        margin-top: 30px;
+    }
+
+    /* แก้ไขปัญหา main-content-area และ sidebar ใน mobile */
+    .has-sidebar {
+        padding: 15px; /* ลด padding โดยรวมของ layout */
+        gap: 15px;
+    }
+    .main-content-area {
+        padding: 15px; /* ให้ padding ของ main-content-area เหมาะสม */
+    }
+    .sidebar {
+        padding: 15px; /* ให้ padding ของ sidebar เหมาะสม */
+        margin-top: 15px;
+    }
+
+    .download-section {
+        padding: 15px; /* ลด padding บนมือถือ */
+        margin: 25px auto 10px auto; /* ลด margin บนมือถือ */
+    }
+    .download-section h3 {
+        font-size: 1.4em; /* ลดขนาดหัวข้อ */
+        margin-bottom: 12px;
+    }
+    .download-section p {
+        font-size: 0.9em; /* ลดขนาดตัวอักษร */
+        margin-bottom: 15px;
         padding: 0 5px;
+    }
+    .btn-download {
+        padding: 10px 20px; /* ลดขนาดปุ่ม */
+        font-size: 0.95em;
+    }
+    .download-note {
+        font-size: 0.75em;
+        padding: 0 5px;
+    }
+}
+
+/* Optional: สำหรับหน้าจอที่เล็กมากๆ (เช่น iPhone SE) */
+@media (max-width: 480px) {
+    .site-title {
+        font-size: 1.1em; /* ลดขนาด Site Title ลงอีก */
+        max-width: calc(100% - 60px); /* ปรับให้มีพื้นที่สำหรับ hamburger */
+    }
+    .site-logo {
+        height: 40px;
+        max-width: 120px;
+    }
+    .hamburger-menu {
+        font-size: 1.6em;
+        top: 15px;
+        right: 15px;
+    }
+    header {
+        padding: 15px 0;
+    }
+    .main-nav {
+        top: 70px; /* ปรับตำแหน่งเมนูเมื่อ header เล็กลง */
+    }
+
+    .hero-section {
+        min-height: 40vh;
+        padding: 15px 0;
+    }
+    .intro-box {
+        padding: 15px;
+    }
+    .intro-box h2 {
+        font-size: 1.5em;
+    }
+    .intro-box p {
+        font-size: 0.85em;
+    }
+    .btn {
+        padding: 8px 15px;
+        font-size: 0.9em;
+    }
+
+    .content-detail-section {
+        padding: 10px; /* ลด padding เนื้อหาให้น้อยที่สุด */
+    }
+    .content-detail-section h2 {
+        font-size: 1.4em;
+        margin-bottom: 10px;
+    }
+    .content-detail-section h3 {
+        font-size: 1.1em;
+        margin-top: 15px;
+        margin-bottom: 5px;
+    }
+    .content-detail-section p,
+    .content-detail-section ul,
+    .content-detail-section ol {
+        font-size: 0.9em;
+        padding: 0 0px; /* ลบ padding ด้านข้างออกเกือบหมด */
+    }
+    .content-detail-section ul,
+    .content-detail-section ol {
+        padding-left: 20px; /* ลด padding ของ list */
+    }
+
+    .exam-question-block {
+        padding: 8px;
+        margin-bottom: 10px;
+    }
+    .exam-question-block h3 {
+        font-size: 1.1em;
+        margin-bottom: 6px;
+    }
+    .exam-question-block p {
+        font-size: 0.85em;
+        margin-bottom: 6px;
+    }
+    .exam-question-block ol {
+        padding-left: 15px;
+    }
+    .exam-question-block ol li {
+        font-size: 0.8em;
+        margin-bottom: 3px;
+    }
+    .exam-question-block .show-answer-btn {
+        padding: 5px 10px;
+        font-size: 0.75em;
+    }
+    .exam-question-block .answer-reveal {
+        font-size: 0.8em;
+    }
+
+
+    .about-page h2 {
+        font-size: 1.5em;
+    }
+    .about-content p {
+        font-size: 0.9em;
+        padding: 0 5px;
+    }
+    .about-page h3 {
+        font-size: 1.3em;
+    }
+    .about-logo {
+        max-width: 80px;
+    }
+    .about-nextgen-logo {
+        max-width: 150px;
+    }
+
+    .sidebar {
+        padding: 10px;
+    }
+    .sidebar h3, .sidebar h4 {
+        font-size: 1em;
+    }
+    .sidebar ul li a {
+        font-size: 0.85em;
+    }
+
+    .download-section {
+        padding: 10px;
+        margin: 20px auto 5px auto;
+    }
+    .download-section h3 {
+        font-size: 1.2em;
+        margin-bottom: 10px;
+    }
+    .download-section p {
+        font-size: 0.85em;
+        padding: 0 0px;
+    }
+    .btn-download {
+        padding: 8px 15px;
+        font-size: 0.85em;
+    }
+    .download-note {
+        font-size: 0.7em;
+        padding: 0 0px;
     }
 }
